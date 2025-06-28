@@ -76,3 +76,36 @@ button:hover {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
+
+
+.splash-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fcefd9;
+  text-align: center;
+}
+
+.splash-image {
+  max-width: 90%;
+  height: auto;
+  image-rendering: pixelated;
+  margin-bottom: 2rem;
+}
+
+.start-button {
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-family: 'Georgia', serif;
+  background-color: #a63b1e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  background-color: #832e17;
+}
