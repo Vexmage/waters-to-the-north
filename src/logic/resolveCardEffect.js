@@ -17,11 +17,12 @@ export function resolveCardEffect(card, gameState) {
   }
 
   if (suitMatch) {
-    const gained = Math.floor(numericValue / 2);
+    const gained = Math.floor(numericValue / 2) + 1; // boost progress slightly for a match
     result.progress += gained;
-    result.log = `Task aligned with the season! You gained ${gained} progress.`;
+    result.morale += 1; // morale reward for aligned task
+    result.log = `Task aligned with the season! You gained ${gained} progress and +1 morale.`;
   } else {
-    result.morale -= 1;
+    result.morale = Math.max(result.morale - 1, 0);
     result.log = `Task mismatched the season. You lost 1 morale.`;
   }
 
