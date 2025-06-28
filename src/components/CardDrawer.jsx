@@ -4,6 +4,9 @@ import React from 'react';
 import { resolveCardEffect } from '../logic/resolveCardEffect.js';
 import { drawCard } from '../logic/drawCard.js';
 import { handleMishepeshu } from '../logic/handleMishepeshu.js';
+import { handleMedicineKeeper } from '../logic/handleMedicineKeeper.js';
+import { handleThunderer } from '../logic/handleThunderer.js';
+
 
 const CardDrawer = ({
   deck,
@@ -19,8 +22,11 @@ const CardDrawer = ({
   progress,
   setProgress,
   copper,
-  setCopper
+  setCopper,
+  shield,
+  setShield
 }) => {
+
   const handleDraw = () => {
     const { card, newDeck, newDiscardPile } = drawCard(deck, discardPile);
 
@@ -44,20 +50,54 @@ const CardDrawer = ({
         season: currentSeason,
       });
 
-      setMorale(result.morale);
-      setProgress(result.progress);
-      newLog.push(result.log);
+if (morale > result.morale && shield) {
+  result.log += ' But the Thunderer’s shield protects you!';
+  result.morale = morale;
+  setShield(false);
+  newLog.push('The Thunderer’s shield has been consumed.');
+}
+
+setMorale(result.morale);
+setProgress(result.progress);
+newLog.push(result.log);
+
     }
 
     // If it's Mishepeshu (Jack)
     if (card.type === 'Mishepeshu') {
       const result = handleMishepeshu({ copper, morale });
 
-      setCopper(result.copper);
-      setMorale(result.morale);
-      newLog.push('The waters churn... Mishepeshu has appeared.');
-      newLog.push(result.log);
+if (morale > result.morale && shield) {
+  result.log += ' But the Thunderer’s shield protects you!';
+  result.morale = morale;
+  setShield(false);
+  newLog.push('The Thunderer’s shield has been consumed.');
+}
+
+setCopper(result.copper);
+setMorale(result.morale);
+newLog.push('The waters churn... Mishepeshu has appeared.');
+newLog.push(result.log);
+
     }
+
+    // If it's Medicine Keeper (Queen)
+    if (card.type === 'Medicine Keeper') {
+    const result = handleMedicineKeeper({ morale, copper });
+
+    setMorale(result.morale);
+    setCopper(result.copper);
+    newLog.push('The Medicine Keeper appears.');
+    newLog.push(result.log);
+    }
+
+    // If it's the Thunderer (King)
+    if (card.type === 'Thunderer') {
+    const result = handleThunderer();
+    setShield(result.shield);
+    newLog.push(result.log);
+    }
+
 
     setTurnLog([...turnLog, ...newLog]);
   };

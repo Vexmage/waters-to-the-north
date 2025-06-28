@@ -18,20 +18,20 @@ const GameBoard = () => {
   const [discardPile, setDiscardPile] = useState([]);
   const [drawnCard, setDrawnCard] = useState(null);
   const currentSeason = { suit: '♦' }; // Simulating Fall for now
-
+  const [shield, setShield] = useState(false);
 
   return (
     <div className="game-board">
       <StatPanel people={people} morale={morale} progress={progress} copper={copper} />
-        <CardDrawer 
-          people={people} setPeople={setPeople}
-          morale={morale} setMorale={setMorale}
-          progress={progress} setProgress={setProgress}
-          copper={copper} setCopper={setCopper}
-          turnLog={turnLog} setTurnLog={setTurnLog}
+        <CardDrawer
           deck={deck} setDeck={setDeck}
           discardPile={discardPile} setDiscardPile={setDiscardPile}
           drawnCard={drawnCard} setDrawnCard={setDrawnCard}
+          turnLog={turnLog} setTurnLog={setTurnLog}
+          morale={morale} setMorale={setMorale}
+          progress={progress} setProgress={setProgress}
+          copper={copper} setCopper={setCopper}
+          shield={shield} setShield={setShield}
         />
 
       <TurnLog log={turnLog} />
