@@ -9,6 +9,7 @@ import { handleThunderer } from '../logic/handleThunderer.js';
 import { handleNanabozho } from '../logic/handleNanabozho.js';
 
 
+
 const CardDrawer = ({
   deck,
   setDeck,
@@ -101,19 +102,17 @@ newLog.push(result.log);
 
     // If it's Nanabozho (Joker)
     if (card.type === 'Nanabozho') {
-    const result = handleNanabozho({ copper, morale, progress, people });
+    const result = handleNanabozho({ morale, progress, copper, people, deck });
 
-    if (result.reshuffle) {
-        setDeck([...deck, ...discardPile]);
-        setDiscardPile([]);
-    }
-
-    setCopper(result.copper);
     setMorale(result.morale);
     setProgress(result.progress);
+    setCopper(result.copper);
     setPeople(result.people);
+    setDeck(result.deck);
+    newLog.push('Nanabozho appears in a whirlwind of laughter and chaos.');
     newLog.push(result.log);
     }
+
 
 
 

@@ -31,6 +31,7 @@ const GameBoard = () => {
           morale={morale} setMorale={setMorale}
           progress={progress} setProgress={setProgress}
           copper={copper} setCopper={setCopper}
+          people={people} setPeople={setPeople} // ← Add these
           shield={shield} setShield={setShield}
         />
 
