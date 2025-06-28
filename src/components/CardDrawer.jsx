@@ -6,6 +6,7 @@ import { drawCard } from '../logic/drawCard.js';
 import { handleMishepeshu } from '../logic/handleMishepeshu.js';
 import { handleMedicineKeeper } from '../logic/handleMedicineKeeper.js';
 import { handleThunderer } from '../logic/handleThunderer.js';
+import { handleNanabozho } from '../logic/handleNanabozho.js';
 
 
 const CardDrawer = ({
@@ -97,6 +98,23 @@ newLog.push(result.log);
     setShield(result.shield);
     newLog.push(result.log);
     }
+
+    // If it's Nanabozho (Joker)
+    if (card.type === 'Nanabozho') {
+    const result = handleNanabozho({ copper, morale, progress, people });
+
+    if (result.reshuffle) {
+        setDeck([...deck, ...discardPile]);
+        setDiscardPile([]);
+    }
+
+    setCopper(result.copper);
+    setMorale(result.morale);
+    setProgress(result.progress);
+    setPeople(result.people);
+    newLog.push(result.log);
+    }
+
 
 
     setTurnLog([...turnLog, ...newLog]);
