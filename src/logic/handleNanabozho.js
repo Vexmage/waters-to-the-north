@@ -20,8 +20,12 @@ export function handleNanabozho({ morale, progress, copper, people, deck }) {
       result.log = "Copper Trick! You gained 1 copper but lost 1 morale.";
       break;
     case 4:
-      result.log = "Vision of the Future: You sense what’s to come... (peek at top 3 cards — not implemented)";
-      break;
+    const peek = deck.slice(0, 3); // Get top 3 cards
+    result.peek = peek;
+    result.log = `Vision of the Future: You glimpse the next 3 cards...\n` +
+        peek.map(c => ` - ${c.value} of ${c.suit} (${c.type})`).join('\n');
+    break;
+
     case 5:
       result.morale += 2;
       result.log = "Spirit’s Favor! You regain 2 morale.";
