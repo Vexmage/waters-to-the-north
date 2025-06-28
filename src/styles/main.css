@@ -1,16 +1,78 @@
+/* main.css */
+
+body {
+  margin: 0;
+  font-family: 'Spectral', serif;
+  background: linear-gradient(to bottom, #fdf6e3, #f0ead6);
+  color: #333;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c1e0f;
+}
+
 .stat-panel {
-  margin: 1rem auto;
+  background-color: #fffef5;
+  border: 2px solid #e6d8b7;
+  border-radius: 12px;
   padding: 1rem;
-  border: 2px solid #444;
-  border-radius: 8px;
-  max-width: 300px;
-  background-color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
-.stat-panel ul {
-  list-style-type: none;
+
+.stat-panel h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-list {
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
-.stat-panel li {
+
+.stat {
+  margin: 0.25rem 0;
   font-size: 1.1rem;
-  margin: 0.3rem 0;
+}
+
+
+button {
+  background-color: #c0461b;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a43b17;
+}
+
+.turn-log {
+  text-align: left;
+  background-color: #fefcf6;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd1ae;
+  margin-top: 2rem;
+}
+
+.turn-log h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }

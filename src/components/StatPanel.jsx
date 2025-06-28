@@ -6,11 +6,11 @@ const StatPanel = ({ people, morale, progress, copper }) => {
   return (
     <div className="stat-panel">
       <h2>Community Status</h2>
-      <ul>
-        <li>🧍 People: {people}</li>
-        <li>💙 Morale: {morale}</li>
-        <li>🛤️ Progress: {progress}</li>
-        <li>🪙 Copper: {copper}</li>
+      <ul className="stat-list">
+        <li className="stat">🧍 People: {people}</li>
+        <li className="stat">💙 Morale: {morale}</li>
+        <li className="stat">🛤️ Progress: {progress}</li>
+        <li className="stat">🪙 Copper: {copper}</li>
       </ul>
     </div>
   );

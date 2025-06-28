@@ -19,6 +19,10 @@ const GameBoard = () => {
   const [drawnCard, setDrawnCard] = useState(null);
   const currentSeason = { suit: '♦' }; // Simulating Fall for now
   const [shield, setShield] = useState(false);
+  const [turnsLeft, setTurnsLeft] = useState(30); // or whatever MAX_TURNS you want
+  const [gameOver, setGameOver] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
+
 
   return (
     <div className="game-board">
@@ -31,8 +35,11 @@ const GameBoard = () => {
           morale={morale} setMorale={setMorale}
           progress={progress} setProgress={setProgress}
           copper={copper} setCopper={setCopper}
-          people={people} setPeople={setPeople} // ← Add these
           shield={shield} setShield={setShield}
+          people={people} setPeople={setPeople}
+          turnsLeft={turnsLeft} setTurnsLeft={setTurnsLeft}
+          gameOver={gameOver} setGameOver={setGameOver}
+          gameWon={gameWon} setGameWon={setGameWon}
         />
 
       <TurnLog log={turnLog} />
