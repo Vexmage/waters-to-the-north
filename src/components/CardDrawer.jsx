@@ -7,6 +7,8 @@ import { handleMishepeshu } from '../logic/handleMishepeshu.js';
 import { handleMedicineKeeper } from '../logic/handleMedicineKeeper.js';
 import { handleThunderer } from '../logic/handleThunderer.js';
 import { handleNanabozho } from '../logic/handleNanabozho.js';
+import { getCardImagePath } from '../utils/cardImage.js';
+
 
 const CardDrawer = ({
   deck,
@@ -149,11 +151,18 @@ const CardDrawer = ({
   return (
     <div className="card-drawer">
       <button onClick={handleDraw} disabled={gameOver}>Draw Card</button>
-      {drawnCard && (
-        <p>
-          <strong>{drawnCard.value} of {drawnCard.suit}</strong> — {drawnCard.type}
-        </p>
-      )}
+{drawnCard && (
+  <div className="drawn-card">
+    <p><strong>{drawnCard.value} of {drawnCard.suit}</strong> — {drawnCard.type}</p>
+    <img
+      src={getCardImagePath(drawnCard.value, drawnCard.suit)}
+      alt={`${drawnCard.value} of ${drawnCard.suit}`}
+      className="card-image"
+      style={{ width: '120px', height: 'auto', marginTop: '10px' }}
+    />
+  </div>
+)}
+
     </div>
   );
 };

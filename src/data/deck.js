@@ -2,7 +2,8 @@
 
 // Generate a standard 54-card deck with custom card types
 
-const suits = ['♠', '♥', '♦', '♣'];
+const suits = ['spades', 'hearts', 'diamonds', 'clubs'];
+
 const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
 // Generate number cards (tasks)
